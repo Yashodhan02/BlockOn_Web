@@ -1,0 +1,152 @@
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayQRblock}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Manage Campaingn</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <div class="container">
+                    <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="QRvalue">
+                    </ngx-qrcode>
+                </div> -->
+                <form [formGroup]="qrForm" >
+                    <div class="row">
+                        <div class="col-md-6"> 
+                              <mat-form-field class="in-width">
+                            <input class="bg-sty"  matInput formControlName="startDate"  [matDatepicker]="startPicker" placeholder="Select Start Date"
+                                [min]=" minDate | date: 'yyyy-MM-dd' " [max]=" maxDate | date: 'yyyy-MM-dd'"
+                                [(ngModel)]="startDate">
+                            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker></mat-datepicker>
+                            <mat-error>
+                                <span class="error"
+                                    *ngIf="qrForm.controls['startDate'].touched && qrForm.controls['startDate'].invalid">
+                                    Start Date required</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="in-width">
+                                <input matInput formControlName="endDate" [matDatepicker]="endPicker" placeholder="Select End Date"
+                                    [min]=" startDate | date: 'yyyy-MM-dd'" [max]=" maxDate | date: 'yyyy-MM-dd'"
+                                    [(ngModel)]="endDate">
+                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endPicker></mat-datepicker>
+                                <mat-error>
+                                    <span class="error"
+                                        *ngIf="qrForm.controls['endDate'].touched && qrForm.controls['endDate'].invalid">
+                                        End Date required</span>
+                                </mat-error>
+                            </mat-form-field>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            
+                    <mat-form-field  appearance="outline">
+                        <mat-select  formControlName="selectedValue" [(ngModel)]="selectedValue" placeholder="Campaingn Source">
+                            <mat-option *ngFor="let month of campaingnName" [value]="month.LookupID">
+                                {{ month.LookupName }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            <span class="error"
+                                *ngIf="qrForm.controls['selectedValue'].touched && qrForm.controls['selectedValue'].invalid">
+                                Campaingn source is required</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <mat-form-field  appearance="outline">
+                                <mat-select  formControlName="selectedScheme" [(ngModel)]="selectedScheme" placeholder="Scheme Name">
+                                    <mat-option *ngFor="let month of AllSchemes" [value]="month.SchemeID">
+                                        {{ month.SchemeName }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    <span class="error"
+                                        *ngIf="qrForm.controls['selectedScheme'].touched && qrForm.controls['selectedScheme'].invalid">
+                                      Scheme Name is required</span>
+                                </mat-error>
+                            </mat-form-field>
+                            
+                        </div>
+                    </div>
+                 
+
+                  
+
+
+
+                   
+                    <button [disabled]="qrForm.invalid" mat-flat-button color="primary" class="m-x-20" type="button"
+                        (click)="createQR(selectedValue)">Create</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closeCreatePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+
+    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+        <mat-card-content >
+            <div class="head-alighn" style="display: flex;
+            justify-content: space-between;">
+             <mat-card-title class="m-b-0" style="color:indigo ;">Create OR Code</mat-card-title>
+             <div>
+ 
+                 <div class="btn-card">
+                     <button mat-flat-button color="primary" class="m-x-20" type="button"
+                         (click)="openCreatePopup()">Create</button>
+                 </div>
+             </div>
+
+            </div>
+           
+
+            <div class="row">
+                <div class="code-img col-md-4 d-flex">
+                    <div id="qrcode-container" *ngFor="let value of qrList">
+                     
+                      
+                        <ngx-qrcode #parent [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="value.QR">
+        
+                        </ngx-qrcode>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h3 style="font-size: 1em;"> {{value.camName}}</h3>
+                                 </div>
+                                <div class="col-lg-12">
+                                    <button class="background: #790ebc4f;
+                                    border: none;
+                                    padding: 5px;
+                                    border-radius: 5px;" (click)="downloadQRCode(value.QR)">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" style="width: 10%;">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                                      </svg> -->
+                                      Download QR Code</button>
+                                    </div>
+                                </div>
+
+                       
+                       
+        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </mat-card-content>
+    </mat-card>
+</div>

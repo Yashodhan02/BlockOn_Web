@@ -1,0 +1,17 @@
+.rounded-search .mat-form-field-wrapper {
+    border-radius: 50px;
+    overflow: hidden;
+  }
+  .name{
+    color:indigo ;
+ }
+ 
+ 
+
+ .mat-mdc-form-field-infix {
+  flex: auto;
+  min-width: 0;
+  width: 420px !important;
+  position: relative;
+  box-sizing: border-box;
+}

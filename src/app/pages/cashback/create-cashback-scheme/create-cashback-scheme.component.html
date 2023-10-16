@@ -1,0 +1,458 @@
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': isSecondModalOpen}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Pick Image</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xl-4">
+                    <div class="card mb-4 mb-xl-0">
+                        <div class="card-header">Photos</div>
+                        <div class="card-body text-center">
+                            <img class="img-account-profile rounded-circle mb-2" [src]="url" alt="">
+                            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                            <input class="" id="inputLogo" type="file" accept=".jpg, .jpeg, .png"
+                                (change)="onFileChange($event)">
+                        </div>
+                        <div *ngFor="let imageData of safeImageDataList">
+                            <img class="img-account-profile rounded-circle mb-2" [src]="imageData.imageSrc" alt=""
+                                (click)="onImageClick(imageData)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closeSecondModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyle ,'z-index': '1050'}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Customize Template</h4>
+            </div>
+            <div class="modal-body">
+                <div class="color-selection">
+                    <div class="color-picker-container">
+                        <h5 class="color-picker-heading" (click)="openSecondModal()">Select Image</h5>
+                    </div>
+                </div>
+                <div class="color-selection">
+                    <div class="color-picker-container">
+                        <h5 class="color-picker-heading">Select Background Color</h5>
+                        <input [(colorPicker)]="backgroundColor" class="color-picker bg-color-picker"
+                            [style.background-color]="backgroundColor">
+                        <input [(colorPicker)]="secondaryColor" class="color-picker bg-color-picker"
+                            [style.background-color]="secondaryColor">
+                    </div>
+                </div>
+                <div class="color-selection">
+                    <div class="color-picker-container">
+                        <h5 class="color-picker-heading">Select Text Color</h5>
+                        <input [(colorPicker)]="textColor" class="color-picker text-color-picker"
+                            [style.background-color]="textColor">
+                    </div>
+                </div>
+                <div>
+                    <mat-card-content class="pad0">
+                        <div>
+                            <div class="">
+                                <mat-card class="col-md-12 col-12 template-style "
+                                    [style.background]="'linear-gradient(-45deg,' + backgroundColor + ', ' + secondaryColor + ')'">
+
+                                    <mat-card-content class="pad0">
+                                        <div class="schemecard-img d-flex">
+                                            <img [src]="url" *ngIf="url; else elseBlock" alt="" width="50%">
+                                            <ng-template #elseBlock>
+                                                <img src="{{safeImageData}}" alt="" width="50%">
+                                            </ng-template>
+                                        </div>
+                                        <mat-card-title class="m-b-0 scheme-name text-center" [style.color]="textColor">
+                                            {{schemeName}}</mat-card-title>
+                                        <div class="container mt-3">
+                                            <div class="package">
+                                                <div class="package__item">
+                                                    <div class="package__header">
+                                                    </div>
+                                                    <div class="package__body">
+                                                        <div class="package__price-container text-center">
+                                                            <div class="package__price text-center"
+                                                                [style.color]="textColor"> ₹
+                                                                {{cashbackAmount}}</div>
+                                                            <p [style.color]="textColor"> {{cashbackAmount |
+                                                                numberToWords}}
+                                                            </p>
+                                                            <p [style.color]="textColor">Voucher</p>
+                                                            <span [style.color]="textColor">Minimum Order Value
+                                                                {{billValue}}</span>
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="e-date">
+                                                                        <h3 [style.color]="textColor">Expiry Date
+                                                                        </h3>
+                                                                        <h4 [style.color]="textColor">{{expiryDate |
+                                                                            date:
+                                                                            'dd-MM-yyyy' }}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="v-number">
+                                                                        <h3 [style.color]="textColor">Voucher Numbar
+                                                                        </h3>
+                                                                        <h4 [style.color]="textColor">abcc/xxxx</h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <ngx-qrcode [elementType]="elementType"
+                                                                        [errorCorrectionLevel]="correctionLevel"
+                                                                        [value]="value">
+                                                                    </ngx-qrcode>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a href="/"><img src="/assets/images/admin/BlockON.png"
+                                                                alt="logo" class="align-middle m-2 logo-new" style="width: 25%;margin: 0 auto !important;
+                                        display: block; padding: 20px 0 0 0;"></a>
+                                                    </div>
+                                                    <div class="package__footer text-center">
+                                                        <button class="minted-btn" [style.color]="textColor">Minted
+                                                            On
+                                                            BlockOn</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closePopup()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<mat-card class="cardWithShadow theme-card">
+
+    <mat-card-header>
+        <mat-card-title class="mat-mdc-card-title m-b-0 "> Create New BlockOn Scheme</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="step-process-form">
+            <div class="progress-bar prog_step">
+                <div class="progress" [style.width.%]="(currentStep - 1) * (100 / 6)">
+                    <div *ngFor="let step of steps" class="progress-step" style="--step: {{ step.number }}">
+                        <div [class.active]="currentStep === step.number" class="step-number">{{ step.number }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <form [formGroup]="myForm">
+                <div [hidden]="currentStep !== 1">
+
+
+                    <h2 class="text-center step-heading">Step 1</h2>
+
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Scheme Name</mat-card-title>
+                            <div [hidden]="">
+                                <mat-form-field class="col-sm-8 col-12" appearance="outline">
+
+                                    <input matInput formControlName="schemeName" [(ngModel)]="schemeName" />
+                                    <mat-error>
+                                        <span class="error"
+                                            *ngIf="myForm.controls['schemeName'].touched && myForm.controls['schemeName'].invalid">
+                                            Scheme Name required</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="btn-card">
+                                <button [disabled]="!schemeName" mat-flat-button color="primary" class="m-x-20"
+                                    (click)="nextStep()">Next</button>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+
+                <div [hidden]="currentStep !== 2">
+                    <h2 class="text-center step-heading">Step 2</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Cashback Amount Per BlockOn Scheme
+                            </mat-card-title>
+                            <div [hidden]="">
+                                <div class="row">
+                                    <mat-card
+                                        class="col-md-2 col-lg-2 col-3 mat-mdc-card mdc-card b-1 shadow-none disc-ammount">
+                                        <mat-card-content class="disc-ammount-new" (click)="handleClick(100)">
+                                            100
+                                        </mat-card-content>
+                                    </mat-card>
+                                    <mat-card
+                                        class="col-md-2 col-lg-2 col-3 mat-mdc-card mdc-card b-1 shadow-none disc-ammount">
+                                        <mat-card-content class="disc-ammount-new" (click)="handleClick(200)">
+                                            200
+                                        </mat-card-content>
+                                    </mat-card>
+                                    <mat-card
+                                        class="col-md-2 col-lg-2 col-3 mat-mdc-card mdc-card b-1 shadow-none disc-ammount">
+                                        <mat-card-content class="disc-ammount-new" (click)="handleClick(300)">
+                                            300
+                                        </mat-card-content>
+                                    </mat-card>
+
+                                    <mat-card
+                                        class="col-md-2 col-lg-2 col-3 mat-mdc-card mdc-card b-1 shadow-none disc-ammount">
+                                        <mat-card-content class="disc-ammount-new" (click)="handleClick(400)">
+                                            400
+                                        </mat-card-content>
+                                    </mat-card>
+
+                                    <mat-card
+                                        class="col-md-2 col-lg-2 col-3 mat-mdc-card mdc-card b-1 shadow-none disc-ammount">
+                                        <mat-card-content class="disc-ammount-new" (click)="handleClick(500)">
+                                            500
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <mat-form-field class="col-sm-8 col-12" appearance="outline">
+                                    <input matInput type="number" formControlName="cashbackAmount"
+                                        [(ngModel)]="cashbackAmount" />
+
+                                    <mat-error
+                                        *ngIf="myForm.controls['cashbackAmount'].touched && myForm.controls['cashbackAmount'].errors">
+                                        <span class="error" *ngIf="myForm.controls['cashbackAmount'].errors">
+                                            Discount Amount is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <div class="btn-card">
+                                    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                        (click)="previousStep()">Previous</button>
+                                    <button [disabled]="!cashbackAmount" mat-flat-button color="primary" class="m-x-20"
+                                        type="button" (click)="nextStep()">Next</button>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+                <div [hidden]="currentStep !== 3">
+                    <h2 class="text-center step-heading">Step 3</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Minimum Bill Value</mat-card-title>
+
+                            <div [hidden]="">
+                                <mat-form-field class="col-sm-8" appearance="outline">
+                                    <input matInput type="number" formControlName="billValue" [(ngModel)]="billValue" />
+                                    <mat-error>
+                                        <span class="error"
+                                            *ngIf="myForm.controls['billValue'].touched && myForm.controls['billValue'].invalid">
+                                            Bill Value required</span>
+                                    </mat-error>
+                                </mat-form-field>
+                                <div class="btn-card">
+                                    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                        (click)="previousStep()">Previous</button>
+                                    <button [disabled]="!billValue" mat-flat-button color="primary" class="m-x-20"
+                                        type="button" (click)="nextStep()">Next</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div [hidden]="currentStep !== 4">
+                    <h2 class="text-center step-heading">Step 4</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Number Of Block</mat-card-title>
+                            <div [hidden]="">
+                                <mat-form-field class="col-sm-8 col-12" appearance="outline">
+                                    <input matInput type="number" formControlName="noOfBlock" [(ngModel)]="noOfBlock" />
+                                    <mat-error>
+                                        <span class="error"
+                                            *ngIf="myForm.controls['noOfBlock'].touched && myForm.controls['noOfBlock'].invalid">
+                                            No Of Blocks required</span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <div class="btn-card">
+                                    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                        (click)="previousStep()">Previous</button>
+                                    <button [disabled]="!noOfBlock" mat-flat-button color="primary" class="m-x-20"
+                                        type="button" (click)="nextStep()">Next</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+                <div [hidden]="currentStep !== 5">
+                    <h2 class="text-center step-heading">Step 5</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Expiry Date</mat-card-title>
+
+                            <div [hidden]="">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" min="{{ minDate | date: 'yyyy-MM-dd' }}"
+                                        max="{{ maxDate | date: 'yyyy-MM-dd' }}" placeholder="Select a date"
+                                        formControlName="expiryDate" [(ngModel)]="expiryDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error>
+                                        <span class="error"
+                                            *ngIf="myForm.controls['expiryDate'].touched && myForm.controls['expiryDate'].invalid">
+                                            Expiry Date required</span>
+                                    </mat-error>
+                                </mat-form-field>
+                                <div class="btn-card">
+                                    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                        (click)="previousStep()">Previous</button>
+                                    <button [disabled]="!expiryDate" mat-flat-button color="primary" class="m-x-20"
+                                        type="button" (click)="nextStep()">Next</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div [hidden]="currentStep !== 6">
+                    <h2 class="text-center step-heading">Step 6</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <div>
+                                <div class="row templatescrollar">
+                                    <ng-container>
+                                        <mat-card class="col-md-4 col-12 template-style " style="height: fit-content;"
+                                            [style.background]="'linear-gradient(-45deg,' + backgroundColor + ', ' + secondaryColor + ')'">
+                                            <mat-card-content class="pad0">
+                                                <div class="schemecard-img d-flex">
+                                                    <mat-radio-button class="example-radio-button" [value]="true"
+                                                        (click)="radioClick(true)"></mat-radio-button>
+                                                    <div>
+                                                        <img [src]="url" *ngIf="url; else elseBlock" alt="" width="50%">
+                                                        <ng-template #elseBlock>
+                                                            <img src="{{safeImageData}}" alt="" width="50%">
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                                <mat-card-title class="m-b-0 scheme-name text-center"
+                                                    [style.color]="textColor">
+                                                    {{schemeName}}</mat-card-title>
+                                                <div class="container mt-3">
+                                                    <div class="package">
+                                                        <div class="package__item">
+                                                            <div class="package__header">
+                                                            </div>
+                                                            <div class="package__body">
+                                                                <div class="package__price-container text-center">
+                                                                    <div class="package__price text-center"
+                                                                        [style.color]="textColor"> ₹
+                                                                        {{cashbackAmount}}
+                                                                    </div>
+                                                                    <p [style.color]="textColor"> {{cashbackAmount |
+                                                                        numberToWords}} </p>
+                                                                    <p [style.color]="textColor">Voucher</p>
+                                                                    <span [style.color]="textColor">Minimum Order
+                                                                        Value
+                                                                        {{billValue}}</span>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <div class="e-date">
+                                                                                <h3 [style.color]="textColor">Expiry
+                                                                                    Date</h3>
+                                                                                <h4 [style.color]="textColor">
+                                                                                    {{expiryDate | date:
+                                                                                    'dd-MM-yyyy' }}
+                                                                                </h4>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="v-number">
+                                                                                <h3 [style.color]="textColor">
+                                                                                    Voucher
+                                                                                    Numbar</h3>
+                                                                                <h4 [style.color]="textColor">
+                                                                                    abcc/xxxx
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <ngx-qrcode [elementType]="elementType"
+                                                                                [errorCorrectionLevel]="correctionLevel"
+                                                                                [value]="value"></ngx-qrcode>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="/"><img src="/assets/images/admin/BlockON.png"
+                                                                        alt="logo" class="align-middle m-2 logo-new"
+                                                                        style="width: 25%;margin: 0 auto !important;
+                                            display: block; padding: 20px 0 0 0;"></a>
+                                                            </div>
+                                                            <div class="package__footer text-center">
+                                                                <button class="minted-btn"
+                                                                    [style.color]="textColor">Minted On
+                                                                    BlockOn</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </mat-card-content>
+                                            <button style="margin-top: 10px;" type="button" class="btn btn-secondary"
+                                                (click)="openPopup(backgroundColor)">Customize</button>
+                                        </mat-card>
+
+                                    </ng-container>
+                                </div>
+                                <div class="btn-card">
+                                    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                        (click)="previousStep()">Previous</button>
+                                    <button mat-flat-button color="primary" class="m-x-20" type="button"
+                                        [disabled]="!radioValue" (click)="nextStep()">Next</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div [hidden]="currentStep !== 7">
+                    <h2 class="text-center step-heading">Step 7</h2>
+                    <mat-card class="col-md-10 col-12 mat-mdc-card mdc-card b-1 shadow-none" style=" margin: auto;">
+                        <mat-card-content>
+                            <mat-card-title class="m-b-0" style="color:indigo ;">Pyament Method</mat-card-title>
+
+                            <div>
+                                <div class="btn-card btn-card-new">
+                                    <h5>
+                                        Total Value + GST ₹ XXXX
+                                    </h5>
+                                    <button mat-flat-button color="primary" class="m-x-20" type="button"
+                                        (click)="submitForm()">Pay Now</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

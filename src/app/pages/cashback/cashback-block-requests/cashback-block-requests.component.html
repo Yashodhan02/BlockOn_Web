@@ -1,0 +1,51 @@
+<mat-card class="cardWithShadow theme-card">
+
+    <mat-card-header>
+        <mat-card-title class="mat-mdc-card-title m-b-0 ">Network Request</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+
+        <div *ngFor="let scheme of schemes">
+            <section class="p-t-20 scrollable-container1" id="scroll-design">
+                <mat-card-header class="text-center">
+                    <h4 class="name">{{ scheme.name }}</h4>
+                    <mat-checkbox class="custom-checkbox">
+                        <span style="color: green"> Approved All</span>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        <span style="color: red;"> Disapproved All</span>
+                    </mat-checkbox>
+                </mat-card-header>
+                <!-- <hr style="opacity: 35%; border-top: dotted 3px;" /> -->
+                <div class="row scrollable-container" id="scroll-design">
+                    <div class="col-lg-6" *ngFor="let customer of scheme.customers">
+                        <mat-card class="b-1 shadow-none">
+                            <mat-card-content class="b-t-1">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="/assets/images/icon/customerlogo.png" style="width: 70%;" alt=""
+                                            class="image">
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-list-item>
+                                            <span matListItemTitle class="f-s-20 f-w-600 name">{{ customer.name
+                                                }}</span>
+                                            <span matListItemLine class="mat-body-1">{{ customer.id }}</span>
+                                        </mat-list-item>
+                                        <mat-checkbox class="custom-checkbox">
+                                            <span style="color: green"> Approved</span>
+                                        </mat-checkbox>
+                                        <mat-checkbox>
+                                            <span style="color: red;"> Disapproved</span>
+                                        </mat-checkbox>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+            </section>
+        </div>
+    </mat-card-content>
+</mat-card>

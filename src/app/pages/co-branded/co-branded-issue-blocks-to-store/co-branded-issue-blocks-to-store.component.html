@@ -1,0 +1,355 @@
+<!-- <mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+      <mat-card-title class="m-b-0">Issue Co-Branded Block</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+      <div class="row">
+          <div class="col-lg-6">
+
+              <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading">Pick A Scheme</mat-card-title>
+              <mat-card class="b-1 cardWithShadow">
+                  <mat-card-header>
+                      <mat-form-field class="w-100 " appearance="outline">
+                          <input matInput placeholder="Enter Scheme name" [(ngModel)]="searchText" />
+                      </mat-form-field>
+                  </mat-card-header>
+                  <mat-card-content class="scrollable-container p-t-1" id="scroll-design">
+                      <mat-radio-group [(ngModel)]="selectedSchemeId">
+                          <mat-radio-button *ngFor="let scheme of pagedSchemeList | filter: searchText"
+                              [value]="scheme.SchemeID" (click)="noOfBlocksCount(scheme.RemainingBlocks)" >
+                                  <h5 class="name">{{ scheme.SchemeName }}</h5>
+                                  Balance Remaining : <span class="mat-body-1" class="name1">{{ scheme.RemainingBlocks }}</span>
+                          </mat-radio-button>
+                      </mat-radio-group>
+                  </mat-card-content>
+                  <mat-paginator [length]="pagedSchemeList.length" [pageSize]="pageSize"
+                      [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+                  </mat-paginator>
+              </mat-card>
+          </div>
+
+          <div class="col-lg-12">
+              <div class="row">
+                  <div class="col-lg-5">
+                      <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading">Pick A Store To Issue
+                      </mat-card-title>
+                  </div>
+                  <div class="col-lg-7">
+                      <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading ">Balance Blocks : &nbsp; &nbsp;
+                          &nbsp; &nbsp; &nbsp; <span class="backClr1"> {{BalanceBlocks}}</span></mat-card-title>
+                         
+                  </div>
+              </div>
+              <section  class="cardWithShadow theme-card" >
+                  <mat-tab-group>
+                      <mat-tab label="Own Stores" class="mat-subtitle-2 f-w-900">
+                          <div class="grid-container" >
+                                  <mat-card-header>
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <input matInput placeholder="Enter Store name" [(ngModel)]="searchText1" />
+                                      </mat-form-field>
+                                  </mat-card-header>
+                                  <mat-card-content class="scrollable-container p-t-1" id="scroll-design">
+                                      <table class="store-table">
+                                          <thead>
+                                              <tr>
+                                                  <th class="table-header"></th>
+                                                  <th class="table-header">Store Name</th>
+                                                  <th class="table-header">Blocks to be Distributed</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr *ngFor="let store of pagedOwnStoresList | filter: searchText1">
+                                                  <td>
+                                                      <mat-checkbox class="store-checkbox"
+                                                          [(ngModel)]="store.selected" (change)="toggleSelectionForOwnStores()">
+                                                      </mat-checkbox>
+                                                  </td>
+                                                  <td>
+                                                      <span matListItemTitle class="f-s-16 f-w-600 name">{{ store.StoreName }}</span>
+                                                  </td>
+                                                  <td >
+                                                      <mat-button-toggle-group [(ngModel)]="store.selectedBlocks" name="blocks" (change)="updateBalance(store)">
+                                                          <mat-button-toggle  [disabled]="BalanceBlocks===0" *ngFor="let block of blocks" [value]="block">{{ block }}</mat-button-toggle>
+                                                      </mat-button-toggle-group>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </mat-card-content>
+                                  <mat-paginator [length]="pagedOwnStoresList.length" [pageSize]="pageSize"
+                                      [pageSizeOptions]="pageSizeOptions" (page)="onPageChangeForOwnStores($event)">
+                                  </mat-paginator>
+                          </div>
+                          <div class="p-t-20 ok">
+                              <button mat-flat-button color="primary" class="m-x-20 "
+                              [disabled]="!hasSelectedOwnStores() || !hasSelectedOwnStoresBlocks() || !selectedSchemeId" 
+                              (click)="submitAndDistributeToOwnStore()">Submit & Distribute</button>
+                          </div>
+                      </mat-tab>
+                      <mat-tab label="Partner Stores">
+                          <div class="grid-container" >
+                              <mat-card-header>
+                                  <mat-form-field class="w-100" appearance="outline">
+                                      <input matInput placeholder="Enter Store name" [(ngModel)]="searchText1" />
+                                  </mat-form-field>
+                              </mat-card-header>
+                              <mat-card-content class="scrollable-container p-t-1" id="scroll-design">
+                                  <table class="store-table">
+                                      <thead>
+                                          <tr>
+                                              <th class="table-header"></th>
+                                              <th class="table-header">Store Name</th>
+                                              <th class="table-header">Blocks to be Distributed</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let store of pagedPartnerStoresList | filter: searchText1">
+                                              <td>
+                                                  <mat-checkbox class="store-checkbox"
+                                                      [(ngModel)]="store.selected" (change)="toggleSelectionForPartnerStores()">
+                                                  </mat-checkbox>
+                                              </td>
+                                              <td>
+                                                  <span matListItemTitle class="f-s-16 f-w-600 name">{{ store.StoreName }}</span>
+                                              </td>
+                                              <td >
+                                                  <mat-button-toggle-group [(ngModel)]="store.selectedBlocks" name="blocks" (change)="updateBalance(store)">
+                                                      <mat-button-toggle  [disabled]="BalanceBlocks===0" *ngFor="let block of blocks" [value]="block">{{ block }}</mat-button-toggle>
+                                                  </mat-button-toggle-group>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </mat-card-content>
+                              <mat-paginator [length]="pagedPartnerStoresList.length" [pageSize]="pageSize"
+                                  [pageSizeOptions]="pageSizeOptions" (page)="onPageChangeForPartnerStores($event)">
+                              </mat-paginator>
+                              <div class="p-t-20 ok">
+                                  <button mat-flat-button color="primary" class="m-x-20 "
+                                  [disabled]="!hasSelectedPartnerStores() || !hasSelectedPartnerBlocks() || !selectedSchemeId" 
+                                  (click)="submitAndDistributeToPartnerStore()">Submit & Distribute</button>
+                              </div>
+                      </div>
+                      </mat-tab>
+                  </mat-tab-group>
+              </section>
+          </div>
+
+      </div>
+  </mat-card-content>
+</mat-card>
+<br> -->
+
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Issue Co-Branded Blocks To Store </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading">Step 1 : Pick A Scheme</mat-card-title>
+                <mat-card class="b-1 cardWithShadow">
+                    <mat-card-header>
+                        <mat-form-field class="w-100 " appearance="outline">
+                            <input matInput placeholder="Enter Scheme name" [(ngModel)]="searchText" />
+                        </mat-form-field>
+                    </mat-card-header>
+                    <mat-card-content class="scrollable-container p-0 con-des" id="scroll-design">
+                        <mat-radio-group [(ngModel)]="selectedSchemeId">
+                            <mat-radio-button class="col-lg-3 col-md-3 col-sm-4 col-12 rad-grp"
+                                *ngFor="let scheme of AllSchemes 
+                                | filter: searchText | paginate:{ itemsPerPage: pageSize, currentPage: currentPageSchemes }" [value]="scheme.SchemeID"
+                                (click)="noOfBlocksCount(scheme.RemainingBlocks)">
+                                <h5 class="name">{{ scheme.SchemeName }}</h5>
+                                Balance Remaining : <span class="mat-body-1" class="name1">{{ scheme.RemainingBlocks
+                                    }}</span>
+                            </mat-radio-button>
+                          
+                        </mat-radio-group>
+                    </mat-card-content>
+                    <div class="button">
+                        <button mat-flat-button color="primary" (click)="prevPageScheme()"
+                            [disabled]="currentPageSchemes === 1">Previous</button>
+                        <span class="page-no">{{ currentPageSchemes }} / {{ totalPagesScheme }}</span>
+                        <button mat-flat-button color="primary" (click)="nextPageScheme()"
+                            [disabled]="currentPageSchemes === totalPagesScheme">Next</button>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading"> Step 2 : Pick A Store To Issue
+                        </mat-card-title>
+                    </div>
+                    <div class="col-lg-7">
+                        <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading ">Balance Blocks : &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; <span class="backClr1"> {{remaningBlocks}}</span></mat-card-title>
+                    </div>
+                </div>
+                <section class="cardWithShadow theme-card">
+                    <mat-tab-group>
+                        <mat-tab label="Own Stores "
+                            class="mat-subtitle-2 f-w-900 tab-body">
+                            <div class="grid-container ">
+                                <mat-card-header>
+                                    <div class="col-lg-2">
+                                        <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading ">All Stores:
+                                            {{own_stores.length}}</mat-card-title>
+                                    </div>
+                                    <mat-form-field class="col-md-4 col-lg-4 col-12 col-sm-12" appearance="outline">
+                                        <input matInput placeholder="Filter Store By City Name"
+                                            [(ngModel)]="searchTextByCityForOwn"
+                                            (keyup)="filterOwnStoresByCity($event)" />
+                                    </mat-form-field>
+                                    <mat-form-field class="col-md-4 col-lg-4 col-12 col-sm-12" appearance="outline">
+                                        <input [disabled]="!searchTextByCityForOwn" matInput
+                                            placeholder="Filter Store By Area Name" [(ngModel)]="searchTextByAreaForOwn"
+                                            (keyup)="filterOwnStoresByArea($event)" />
+                                    </mat-form-field>
+                                </mat-card-header>
+                                <div style="display: flex;
+                                align-items: center;
+                                padding-left: 5%; padding-bottom: 2%;">
+                                    <span> Select All </span>
+
+                                    <mat-checkbox [(ngModel)]="selectAll" (change)="toggleSelectAllForOwnStores()">
+                                    </mat-checkbox>
+                                    <input type="text" [disabled]="!selectAll" placeholder="Enter No Of Blocks"
+                                        [(ngModel)]="noOfBlocks" class="blockNos"
+                                        (keyup)="updateNoOfBlocksForOwnStoreAll($event)">
+
+                                </div>
+                                <mat-card-content class="" id="scroll-design">
+                                    <table class="store-table w-100">
+                                        <thead
+                                            style="background-color: thistle; text-transform: uppercase; color: white;">
+                                            <tr>
+                                                <th class="table-header"></th>
+                                                <th class="table-header">Store Name</th>
+                                                <th class="table-header">Blocks to be Distributed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                *ngFor="let store of own_stores| paginate:{ itemsPerPage: pageOwnSize, currentPage: currentPageOwnStores }">
+                                                <td>
+                                                    <mat-checkbox class="store-checkbox"
+                                                        (change)="toggleSelectForOwnStores()"
+                                                        [(ngModel)]="store.selected"></mat-checkbox>
+                                                </td>
+                                                <td>
+                                                    <span matListItemTitle class="f-s-16 f-w-600 name">{{
+                                                        store.StoreName }}</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="nosBlks" placeholder="Enter No Of Blocks"
+                                                        [(ngModel)]="store.noOfBlocks" [disabled]="!store.selected"
+                                                        (keyup)="updateNoOfBlockForOwnStore()">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </mat-card-content>
+
+                                <div class="button2">
+                                    <button mat-flat-button color="primary" (click)="prevPageOwn()"
+                                        [disabled]="currentPageOwnStores === 1">Previous</button>
+                                    <span class="page-no">{{ currentPageOwnStores }} / {{ totalPagesOwn }}</span>
+                                    <button mat-flat-button color="primary" (click)="nextPageOwn()"
+                                        [disabled]="currentPageOwnStores === totalPagesOwn">Next</button>
+                                </div>
+                            </div>
+                            <div class="p-t-20 ok">
+                                <button mat-flat-button color="primary" class="m-x-20 " [disabled]="!selectedSchemeId || !IsSumitOwnStore "
+                                    (click)="submitAndDistributeToOwnStore()">Submit & Distribute</button>
+                            </div>
+                        </mat-tab>
+
+
+                        <mat-tab label="Partner Stores"
+                            class="mat-subtitle-2 f-w-900 tab-body">
+                            <div class="grid-container">
+                                <mat-card-header>
+                                    <div class="col-lg-2">
+                                        <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading ">All Stores:
+                                            {{partner_stores.length}}</mat-card-title>
+                                    </div>
+                                    <mat-form-field class="col-md-4 col-lg-4 col-12 col-sm-12" appearance="outline">
+                                        <input matInput placeholder="Filter Store By City Name"
+                                            [(ngModel)]="searchTextByCityForPartner"
+                                            (keyup)="filterPartnerStoresByCity($event)" />
+                                    </mat-form-field>
+                                    <mat-form-field class="col-md-4 col-lg-4 col-12 col-sm-12" appearance="outline">
+                                        <input [disabled]="!searchTextByCityForPartner" matInput
+                                            placeholder="Filter Store By Area Name"
+                                            [(ngModel)]="searchTextByAreaForPartner"
+                                            (keyup)="filterPartnerStoresByArea($event)" />
+                                    </mat-form-field>
+                                </mat-card-header>
+                                <div style="display: flex;
+                                align-items: center;
+                                padding-left: 5%; padding-bottom: 2%;">
+                                    <span> Select All </span>
+                                    <mat-checkbox [(ngModel)]="selectAllForPartnerStore"
+                                        (change)="toggleSelectAllForPartnerStore()"></mat-checkbox>
+                                    <input type="text" [disabled]="!selectAllForPartnerStore"
+                                        placeholder="Enter No Of Blocks" [(ngModel)]="noOfBlocks" class="blockNos"
+                                        (keyup)="updateNoOfBlocksForPartnerStoreAll($event)">
+                                </div>
+                                <mat-card-content class="" id="scroll-design">
+                                    <table class="store-table w-100">
+                                        <thead style="background-color: thistle; text-transform: uppercase;">
+                                            <tr>
+                                                <th class="table-header"></th>
+                                                <th class="table-header">Store Name</th>
+                                                <th class="table-header">Blocks to be Distributed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                *ngFor="let store of partner_stores | paginate:{ itemsPerPage: pagePartnerSize, currentPage: currentPagePartnerStores }">
+                                                <td>
+                                                    <mat-checkbox class="store-checkbox"
+                                                        (change)="toggleSelectForPartnerStores()"
+                                                        [(ngModel)]="store.selected"></mat-checkbox>
+                                                </td>
+                                                <td>
+                                                    <span matListItemTitle class="f-s-16 f-w-600 name">{{
+                                                        store.StoreName }}</span>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="nosBlks" placeholder="Enter No Of Blocks"
+                                                        [(ngModel)]="store.noOfBlocks" [disabled]="!store.selected"
+                                                        (keyup)="updateNoOfBlocksForPartnerStore()">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </mat-card-content>
+                                <div class="button2">
+                                    <button mat-flat-button color="primary" (click)="prevPagePartner()"
+                                        [disabled]="currentPagePartnerStores === 1">Previous</button>
+                                    <span class="page-no">{{ currentPagePartnerStores }} / {{ totalPagespartner
+                                        }}</span>
+                                    <button mat-flat-button color="primary" (click)="nextPagePartner()"
+                                        [disabled]="currentPagePartnerStores === totalPagespartner">Next</button>
+                                </div>
+                            </div>
+                            <div class="p-t-20 ok">
+                                <button mat-flat-button color="primary" class="m-x-20 "
+                                    [disabled]=" !selectedSchemeId || !IsSumitPartnerStore"
+                                    (click)="submitAndDistributeToPartnerStore()">Submit & Distribute</button>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </section>
+            </div>
+
+        </div>
+    </mat-card-content>
+</mat-card>
+<br>

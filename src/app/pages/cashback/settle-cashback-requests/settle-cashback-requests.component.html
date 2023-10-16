@@ -1,0 +1,113 @@
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">Scheme Name</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="storeName" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">Bill Amount</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="billAmount" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">Bill Number</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="billNumber" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">GST Number</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="gstNumber" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">Product Name</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="productName" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color:indigo ;">Product Code</mat-card-title>
+                        <mat-form-field appearance="outline">
+                            <input readonly="true" matInput [(ngModel)]="productCode" />
+                        </mat-form-field>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-card-title class="m-b-0" style="color: indigo;">View Documents</mat-card-title>
+                        <div class="row">
+                            <div *ngFor="let item of images" class="col-4">
+                                <img src="{{ item.image }}" style="width: 70%;" alt="Image" class="image">
+                                {{ item.title }}
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-checkbox class="custom-checkbox">
+                            <span style="color: green"> Approved</span>
+                        </mat-checkbox>
+                        <mat-checkbox>
+                            <span style="color: red;"> Disapproved</span>
+                        </mat-checkbox>
+                    </mat-card-content>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="mat-mdc-card-title m-b-0 ">Cashback Settlement Queue</mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="col-lg-7">
+            <mat-card-title class="mat-mdc-card-title m-b-0 scheme-heading ">Pending Requests : &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; <span class="backClr1"> XX</span></mat-card-title>
+
+        </div>
+        <hr style="opacity: 35%; border-top: dotted 3px;" />
+        <div *ngFor="let scheme of schemes">
+            <section class="p-t-20 scrollable-container1" id="scroll-design">
+                <mat-card-header class="text-center">
+                    <h4 class="name">{{ scheme.name }}</h4>
+                </mat-card-header>
+                <!-- <hr style="opacity: 35%; border-top: dotted 3px;" /> -->
+                <div class="row scrollable-container" id="scroll-design">
+                    <div class="col-lg-6" *ngFor="let customer of scheme.customers">
+                        <mat-card class="b-1 shadow-none">
+                            <mat-card-content class="b-t-1">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="/assets/images/icon/customerlogo.png" style="width: 50%;" alt=""
+                                            class="image">
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-list-item>
+                                            <span matListItemTitle class="f-s-20 f-w-600 name">{{ customer.name}}</span>
+                                        </mat-list-item>
+                                        <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button"
+                                            (click)="openPopup(customer.id)">Preview</button>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+            </section>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,58 @@
+
+.row1{
+    justify-content: center;
+    margin-top: 68px;
+}
+.backClr{
+    // border: 2px solid indigo;
+    border-radius: 10px;
+    // background-color: #ECE3F0;
+}
+.a{
+    text-decoration: none;
+}
+// .mat-icon {
+//     font-size: 20px;
+//   }
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+.order-card {
+    color: #fff;
+}
+
+
+.mat-body-1 {
+   
+    color: #ffffff;
+}
+ .mdc-list-item__primary-text, html .mat-drawer-container, html .mat-drawer {
+    color: #ffffff;
+}
+
+.btn-new{
+    background-color: #790ebc;
+}
+
+.mat-icon {
+    -webkit-user-select: none;
+    user-select: none;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 54px;
+    width: 44px;
+    overflow: hidden;
+}

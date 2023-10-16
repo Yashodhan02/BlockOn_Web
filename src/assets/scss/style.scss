@@ -1,0 +1,153 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+@import "variables";
+@import "layouts/transitions";
+@import "helpers/color";
+@import "helpers/icon-size";
+
+//Theme colors
+
+@import "themecolors/default_theme";
+@include mat.all-component-themes($bluetheme);
+
+//container layout
+@import "overrides/materialoverrides";
+@import "container";
+@import "layouts/layouts";
+@import "grid/grid";
+@import "helpers/custom-flex";
+@import "helpers/index";
+
+
+// pages
+@import "pages/dashboards";
+@import "pages/auth";
+
+//bootstrap
+@import '~bootstrap/dist/css/bootstrap.min.css';
+n
+.search-wrapper {
+    border-radius: 20px;
+    background-color: var(--search-area-bg);
+    padding-right: 12px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    color: var(--light-font);
+    box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+    overflow: hidden;
+}
+.search-input {
+    border: none;
+    flex: 1;
+    outline: none;
+    height: 100%;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: var(--search-area-bg);
+    color: var(--main-color);
+}
+.mdc-tab {
+    min-width: 90px;
+    -webkit-tap-highlight-color: rgb(222 191 241);}
+
+#scroll-design::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #dbbaf0;
+	border-radius: 10px;
+}
+
+#scroll-design::-webkit-scrollbar
+{
+	width: 10px;
+	// background-color: #790ebc;
+}
+
+#scroll-design::-webkit-scrollbar-thumb
+{
+	background-color: #b568e6;
+	border-radius: 10px;
+	// background-image: -webkit-linear-gradient(90deg,
+	//                                           rgba(0, 0, 0, .2) 25%,
+	// 										  transparent 25%,
+	// 										  transparent 50%,
+	// 										  rgba(0, 0, 0, .2) 50%,
+	// 										  rgba(0, 0, 0, .2) 75%,
+	// 										  transparent 75%,
+	// 										  transparent)
+}
+
+.bg-new{
+    background-color: #790ebc42 !important;
+}
+.view-btn{
+    padding: 10px 0 0 0;
+
+}
+.schemecard-img img{
+    margin: 0 auto;
+    display: block;
+}
+
+.schemecard-img-n img{
+    margin: 0 auto;
+    display: block;
+}
+
+.package__price{
+    font-weight: 900;
+    font-size: 45px;
+    padding: 6px 0 16px 0;
+}
+.package__price-container p{
+   
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0;
+}
+
+.package__price-container span{
+   
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.package__price-container h3{
+    font-size: 10px;
+    font-weight: 600;
+    margin: 0;
+    padding: 18px 0 0 0;
+}
+
+.package__price-container h4{
+    font-size: 15px;
+    margin: 0 0 15px 0;
+}
+.minted-btn{
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+.scheme-name{
+    padding: 15px 0 5px 0;
+}
+.schemecard-width{
+    max-width: 30.333333%;
+    margin: 0 20px 0 0;
+}
+
+.prog_step{
+    overflow: inherit;
+}
+@media screen and (max-width: 768px) {
+    .schemecard-width{
+        max-width: 100% !important;
+       
+    }
+}

@@ -1,0 +1,36 @@
+.in-width {
+    width: 100% !important;
+    
+}
+.modal-dialog {
+    /* position: relative; */
+    width: 100%;
+    margin: 0 AUTO;
+    pointer-events: none;
+    display: block;
+    position: relative;
+    top: 130px;
+    left: 100px;
+}
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: 9px;
+    /* outline: 0; */
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+// .bg-sty{
+//     background-color: white;
+//     border: 1px solid #8080802b;
+//     border-radius: 6px;
+// }

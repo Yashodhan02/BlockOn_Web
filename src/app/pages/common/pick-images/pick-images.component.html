@@ -1,0 +1,14 @@
+<div class="col-xl-4">
+    <div class="card mb-4 mb-xl-0">
+        <div class="card-header">Photos</div>
+        <div class="card-body text-center">
+            <img class="img-account-profile rounded-circle mb-2" [src]="url" alt="">
+            <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+            <input class="col-md-3" id="inputLogo" type="file" accept=".jpg, .jpeg, .png"
+                (change)="onFileChange($event)">
+        </div>
+        <div *ngFor="let imageData of safeImageDataList">
+            <img class="img-account-profile rounded-circle mb-2" [src]="imageData.imageSrc" alt="">
+        </div>
+    </div>
+</div>

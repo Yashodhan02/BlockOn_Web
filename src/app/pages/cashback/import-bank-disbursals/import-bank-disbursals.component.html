@@ -1,0 +1,42 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Pick A Batch Number</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div>
+            <div class="col-lg-6">
+                <mat-card class="b-1 shadow-none">
+                    <mat-card-header>
+                        <mat-form-field class="w-100 " appearance="outline">
+                            <input matInput placeholder="Enter Scheme name" [(ngModel)]="searchText" />
+                        </mat-form-field>
+                    </mat-card-header>
+                    <mat-card-content class="scrollable-container p-t-1" id="scroll-design">
+                        <mat-selection-list [multiple]="false">
+                            <mat-list-option *ngFor="let scheme of pagedSchemeList | filter: searchText">
+                                <span matListItemTitle class="f-s-16 f-w-600 name">{{ scheme.name }}</span>
+                                <span matListItemLine class="mat-body-1">Balance Remaining {{ scheme.balance }}</span>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-card-content>
+                    <mat-paginator [length]="schemeList.length" [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+                    </mat-paginator>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<!-- <section>
+    <mat-card class="col-md-3 backClr btn-new" style="margin: auto;  background-color: #790ebc;">
+        <mat-card-content class=" network-btn">
+            <mat-card-title class="m-b-0 text-center" style="color:rgb(247, 246, 248) ;
+        border-radius: 10px;">Import with UTR & number
+            </mat-card-title>
+        </mat-card-content>
+    </mat-card>
+</section> -->
+<div id="btn-btm">
+    <button mat-flat-button color="gray" class="m-x-20 pre-btn" type="button">Import with UTR & number</button>
+</div>

@@ -1,0 +1,285 @@
+// .name{
+//     color:indigo ;
+//     font-weight: bold;
+//  }
+//  .name1{
+//      color:rgb(236, 13, 236) ;
+//      font-weight: bold;
+//   }
+//  .scrollable-container {
+//     height: 218px; /* Set the desired height of the scrollable container */
+//     overflow: auto;
+//   }
+  
+ 
+//   .mdc-form-field{
+//      margin-bottom: 3px;
+//   }
+ 
+//  .scheme-heading{
+//     padding: 10px 0 20px 0;
+//  }
+ 
+//  .newdisplay{
+//      display: initial !important;
+//  }
+//  #scroll-design::-webkit-scrollbar-track
+//  {
+//      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+//      background-color: #dbbaf0;
+//      border-radius: 10px;
+//  }
+ 
+//  #scroll-design::-webkit-scrollbar
+//  {
+//      width: 10px;
+//      // background-color: #790ebc;
+//  }
+ 
+//  #scroll-design::-webkit-scrollbar-thumb
+//  {
+//      background-color: #b568e6;
+//      border-radius: 10px;
+//      // background-image: -webkit-linear-gradient(90deg,
+//      //                                           rgba(0, 0, 0, .2) 25%,
+//      // 										  transparent 25%,
+//      // 										  transparent 50%,
+//      // 										  rgba(0, 0, 0, .2) 50%,
+//      // 										  rgba(0, 0, 0, .2) 75%,
+//      // 										  transparent 75%,
+//      // 										  transparent)
+//  }
+ 
+ 
+//  // .grid-container {
+//  //     display: grid;
+//  //     grid-template-columns: repeat(2, 1fr);
+//  //     gap: 20px; /* Adjust the gap between columns */
+//  // }
+ 
+//  .shadow-container {
+//      border-radius: 8px; /* Adjust as needed */
+//      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow properties */
+//      padding: 16px; /* Adjust padding as needed */
+//  }
+ 
+//  .radio-row {
+//      display: flex;
+//      justify-content: space-between;
+//      margin-bottom: 10px; /* Adjust margin as needed */
+//  }
+ 
+//  .mat-radio-button {
+//      flex-basis: calc(50% - 5px); /* Adjust width and spacing as needed */
+//      box-sizing: border-box;
+//  }
+ 
+//  .scheme-details {
+//      display: flex;
+//      flex-direction: column;
+//      margin-bottom: 10px;
+//  }
+ 
+//  // .name {
+//  //     font-size: 16px;
+//  //     font-weight: 600;
+//  // }
+ 
+//  .balance {
+//      font-size: 14px;
+//  }
+ 
+//  .ok {
+//      display: flex;
+//      align-items: center;
+//      justify-content: center;
+//  }
+
+.name{
+    color:indigo ;
+    font-weight: bold;
+ }
+ .name1{
+     color:rgb(236, 13, 236) ;
+     font-weight: bold;
+  }
+ .scrollable-container {
+ //   height: 238px; /* Set the desired height of the scrollable container */
+     max-height: 300px;
+     min-height: 55px;
+    overflow: auto;
+    padding: 0!important;
+  }
+ 
+ td > input[type="text"]{
+     width: 70%;
+     padding: 5px;
+     background: gainsboro;
+     border-radius: 10px;
+ }
+ 
+  html .theme-card.mat-mdc-card .mat-mdc-card-content {
+      padding: 0px !important; 
+ }
+ 
+ .mdc-checkbox{
+     z-index: -5 !important;
+ }
+  
+ 
+  .mdc-form-field{
+     margin-bottom: 3px;
+  }
+ 
+ .scheme-heading{
+    padding: 10px 0 20px 0;
+ }
+ 
+ .newdisplay{
+     display: initial !important;
+ }
+ #scroll-design::-webkit-scrollbar-track
+ {
+     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: #dbbaf0;
+     border-radius: 10px;
+ }
+ 
+ #scroll-design::-webkit-scrollbar
+ {
+     width: 10px;
+     // background-color: #790ebc;
+ }
+ 
+ #scroll-design::-webkit-scrollbar-thumb
+ {
+     background-color: #b568e6;
+     border-radius: 10px;
+     // background-image: -webkit-linear-gradient(90deg,
+     //                                           rgba(0, 0, 0, .2) 25%,
+     // 										  transparent 25%,
+     // 										  transparent 50%,
+     // 										  rgba(0, 0, 0, .2) 50%,
+     // 										  rgba(0, 0, 0, .2) 75%,
+     // 										  transparent 75%,
+     // 										  transparent)
+ }
+ 
+ 
+ // .grid-container {
+ //     display: grid;
+ //     grid-template-columns: repeat(2, 1fr);
+ //     gap: 20px; /* Adjust the gap between columns */
+ // }
+ 
+ .shadow-container {
+     border-radius: 8px; /* Adjust as needed */
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow properties */
+     padding: 16px; /* Adjust padding as needed */
+ }
+ 
+ .radio-row {
+     display: flex;
+     justify-content: space-between;
+     margin-bottom: 10px; /* Adjust margin as needed */
+ }
+ 
+ .mat-radio-button {
+     flex-basis: calc(50% - 5px); /* Adjust width and spacing as needed */
+     box-sizing: border-box;
+ }
+ 
+ .scheme-details {
+     display: flex;
+     flex-direction: column;
+     margin-bottom: 10px;
+ }
+ 
+ .mat-mdc-tab-body-content {
+     height: 100%;
+     overflow: hidden;
+ }
+ 
+ .tab-body > .mat-mdc-tab-body-content{
+     overflow: hidden !important;
+ }
+ 
+ .blockNos, .nosBlks{
+     width:30%; 
+     padding:5px; 
+     background: whitesmoke;
+     border-radius: 10px;
+    text-align: center;
+ }
+  .blockNos:disabled, .nosBlks:disabled {
+     border: 1.8px solid black !important;
+    
+     background: gainsboro !important;
+ }
+ 
+ tbody, td, tfoot, th, thead, tr {
+     padding: 5px;
+ }
+ th{
+     position: sticky;
+     top: 0;
+     background-color: thistle;
+     padding: 8px;
+ }
+ 
+ td,th{
+     margin: 0;
+ }
+ // .name {
+ //     font-size: 16px;
+ //     font-weight: 600;
+ // }
+  mat-checkbox.mdc-checkbox {
+     z-index: -5 !important;
+ }
+ .mat-mdc-checkbox
+ .mdc-checkbox{
+     z-index: -5 !important; 
+ }
+ 
+ .ngx-pagination{
+     margin-top: 2em;
+ }
+ 
+ .balance {
+     font-size: 14px;
+ }
+ 
+ .ok {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 15px !important;
+ }
+ 
+ table{
+     text-align: center;
+ }
+ 
+ .custom-pg ::ng-deep .ngx-pagination a{
+     font-weight: 600 !important;
+     font-weight: 600 !important;
+     font-size: 1.1em !important;
+ }
+ 
+ .button{
+     padding: 10px;
+     display: flex;
+     justify-content: flex-end;
+ }
+ .button2{
+         margin-right: 15px;
+         display: flex;
+         justify-content: flex-end;
+ }
+ .page-no{
+     padding: 5px;
+     font-weight: 800;
+ }
+ 
+ 

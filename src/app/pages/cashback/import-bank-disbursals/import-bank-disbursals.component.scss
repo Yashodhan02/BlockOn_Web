@@ -1,0 +1,83 @@
+.name{
+    color:indigo ;
+ }
+ .scrollable-container {
+    height: 200px; /* Set the desired height of the scrollable container */
+    overflow: auto;
+  }
+  .backClr{
+    border: 2px solid indigo;
+    border-radius: 10px;
+    background-color: #ECE3F0;
+ }
+ 
+ .backClr1{
+    order: 1px solid #4b008238;
+    background-color: #ECE3F0;
+    padding: 4px 20px;
+    border-radius: 10%;
+    margin-right: auto;
+ }
+ 
+ .scheme-heading{
+    padding: 10px 0 20px 0;
+ }
+ 
+ #scroll-design::-webkit-scrollbar-track
+ {
+     //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     background-color: #dbbaf0;
+     border-radius: 10px;
+ }
+ 
+ #scroll-design::-webkit-scrollbar
+ {
+     width: 10px;
+     // background-color: #790ebc;
+ }
+ 
+ #scroll-design::-webkit-scrollbar-thumb
+ {
+     background-color: #b568e6;
+     border-radius: 10px;
+ }
+ .multiline-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+.ok {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-responsive td, .table-responsive mat-cell {
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.table-striped>tbody>tr th {
+    background: #790ebc;
+    padding: 18px 0 18px 0;
+    color: white;
+	
+}
+
+.sticky-header th {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Set the desired background color for the sticky header */
+    z-index: 1;
+}
+.pre-btn{
+    background-color: #790ebc;
+    // left: 391px;
+    color:white;
+  }
+#btn-btm
+{
+    display: flex;
+    justify-content: center;
+}

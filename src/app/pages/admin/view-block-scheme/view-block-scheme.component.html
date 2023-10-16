@@ -1,0 +1,453 @@
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyleForScheme}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Scheme Details</h4>
+                <button type="button" class="btn btn-light close" (click)="closePopupForScheme()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="template-card">
+                    <mat-card-content class="pad0">
+                        <div class="template-card" *ngIf="SchemeDetail">
+                            <div class="template-card">
+                                <mat-card class="col-md-12 col-12 template-style "
+                                    [style.background]="'linear-gradient(-45deg,' + SchemeDetail[0].BgColor + ', ' + SchemeDetail[0].BgSecondaryColor + ')'">
+
+                                    <mat-card-content class="pad0">
+                                        <div class="schemecard-img d-flex">
+                                            <img src={{safeImageData}} alt="" width="50%" style="right: 0px;">
+                                        </div>
+                                        <mat-card-title class="m-b-0 scheme-name text-center"
+                                            [style.color]="SchemeDetail[0].TxtColor">
+                                            {{SchemeDetail[0].SchemeName}}</mat-card-title>
+                                        <div class="container mt-3">
+                                            <div class="package">
+                                                <div class="package__item">
+                                                    <div class="package__header">
+                                                    </div>
+                                                    <div class="package__body">
+                                                        <div class="package__price-container text-center">
+                                                            <div class="package__price text-center"
+                                                                [style.color]="SchemeDetail[0].TxtColor"> ₹
+                                                                {{SchemeDetail[0].DiscountAmount}}</div>
+                                                            <p [style.color]="SchemeDetail[0].TxtColor">
+                                                                {{SchemeDetail[0].DiscountAmount|numberToWords}} </p>
+                                                            <p [style.color]="SchemeDetail[0].TxtColor">Voucher</p>
+                                                            <span [style.color]="SchemeDetail[0].TxtColor">Minimum Order
+                                                                Value
+                                                                {{SchemeDetail[0].MinimumBillValue}}</span>
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="e-date">
+                                                                        <h3 [style.color]="SchemeDetail[0].TxtColor">
+                                                                            Expiry Date
+                                                                        </h3>
+                                                                        <h4 [style.color]="SchemeDetail[0].TxtColor">
+                                                                            {{SchemeDetail[0].ExpiryDate |
+                                                                            date:'dd-MM-yyyy' }}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="v-number">
+                                                                        <h3 [style.color]="SchemeDetail[0].TxtColor">
+                                                                            Voucher Numbar
+                                                                        </h3>
+                                                                        <h4 [style.color]="SchemeDetail[0].TxtColor">
+                                                                            {{SchemeDetail[0].VoucherNo}}</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6"
+                                                                    *ngFor="let value of schemeOptionArrayAsNumbers">
+                                                                    <div class="row">
+                                                                        <ng-container *ngIf="value === 3">
+                                                                            <span
+                                                                                [style.color]="SchemeDetail[0].TxtColor">
+                                                                                Tradable</span>
+                                                                        </ng-container>
+                                                                        <ng-container *ngIf="value === 4">
+                                                                            <span
+                                                                                [style.color]="SchemeDetail[0].TxtColor">
+                                                                                Transferable </span>
+                                                                        </ng-container>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <ngx-qrcode [elementType]="elementType"
+                                                                        [errorCorrectionLevel]="correctionLevel"
+                                                                        [value]="value">
+                                                                    </ngx-qrcode>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Add a button or link to trigger the T&C pop-up within the modal -->
+                                                            <a [style.color]="SchemeDetail[0].TxtColor" (click)="showTermsAndConditionsModal()" style="cursor: pointer;">T & C </a>
+                                                        </div>
+
+                                                        <a href="/"><img src="/assets/images/admin/BlockON.png"
+                                                                alt="logo" class="align-middle m-2 logo-new" style="width: 25%;margin: 0 auto !important;
+                                        display: block; padding: 20px 0 0 0;"></a>
+                                                    </div>
+                                                    <div class="package__footer text-center">
+                                                        <button class="minted-btn"
+                                                            [style.color]="SchemeDetail[0].TxtColor">Minted On
+                                                            BlockOn</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closePopupForScheme()">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Terms and Conditions -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyleForTerms}">
+    <div class="modal-dialog terms" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Terms and Conditions
+                </h6>
+                <button type="button" class="btn btn-light close" (click)="hideTermsAndConditionsModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- <div class="modal-body">
+                <p>This is the Terms and Conditions content.
+                </p>
+            </div> -->
+            <div class="modal-body">
+                <ul>
+                    <li *ngFor="let paragraph of termsAndConditionList">
+                        {{ paragraph.TermAndCondition}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayStyleForScheme}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Scheme Details</h4>
+            </div>
+            <div class="flip-card-container" *ngIf="SchemeDetail">
+                <mat-card class="flip-card">
+                    <div class="flip-card-front" >
+                        <mat-card class="col-md-12 col-12  template-style"
+                            [style.background-color]="SchemeDetail[0].BgColor">
+                            <mat-card-content class="pad0">
+                                <div class="schemecard-img d-flex">
+                                    <img src={{safeImageData}} alt="" width="50%" style="right: 0px;">
+                                </div>
+                                <mat-card-title class="m-b-0 scheme-name text-center"
+                                    [style.color]="SchemeDetail[0].TxtColor">
+                                    {{SchemeDetail[0].SchemeName}}</mat-card-title>
+                                <div class="container mt-3">
+                                    <div class="package">
+                                        <div class="package__item">
+                                            <div class="package__header">
+                                            </div>
+                                            <div class="package__body">
+                                                <div class="package__price-container text-center">
+                                                    <div class="package__price text-center"
+                                                        [style.color]="SchemeDetail[0].TxtColor"> ₹
+                                                        {{SchemeDetail[0].DiscountAmount}}</div>
+                                                    <p [style.color]="SchemeDetail[0].TxtColor">
+                                                        {{SchemeDetail[0].DiscountAmount|numberToWords}} </p>
+                                                    <p [style.color]="SchemeDetail[0].TxtColor">Voucher</p>
+                                                    <span [style.color]="SchemeDetail[0].TxtColor">Minimum Order
+                                                        Value
+                                                        {{SchemeDetail[0].MinimumBillValue}}</span>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="e-date">
+                                                                <h3 [style.color]="SchemeDetail[0].TxtColor">
+                                                                    Expiry Date
+                                                                </h3>
+                                                                <h4 [style.color]="SchemeDetail[0].TxtColor">
+                                                                    {{SchemeDetail[0].ExpiryDate |
+                                                                    date:'dd-MM-yyyy' }}</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="v-number">
+                                                                <h3 [style.color]="SchemeDetail[0].TxtColor">
+                                                                    Voucher Numbar
+                                                                </h3>
+                                                                <h4 [style.color]="SchemeDetail[0].TxtColor">
+                                                                    {{SchemeDetail[0].VoucherNo}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <ngx-qrcode [elementType]="elementType"
+                                                                [errorCorrectionLevel]="correctionLevel"
+                                                                [value]="value">
+                                                            </ngx-qrcode>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="/"><img src="/assets/images/admin/BlockON.png" alt="logo"
+                                                        class="align-middle m-2 logo-new" style="width: 25%;margin: 0 auto !important;
+                                        display: block; padding: 20px 0 0 0;"></a>
+                                            </div>
+                                            <div class="package__footer text-center">
+                                                <button class="minted-btn"
+                                                    [style.color]="SchemeDetail[0].TxtColor">Minted On
+                                                    BlockOn</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="flip-card-back">
+                        <mat-card class="col-md-12 col-12  template-style" [style.background-color]="SchemeDetail[0].BgColor">
+                       <img src="/assets/images/admin/BlockON.png" alt="logo"
+                                class="align-middle m-2 logo-new" style="width: 60%; margin: 0 auto !important;
+                        display: block; padding: 200px 0 0 0;">
+                        </mat-card>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closePopupForScheme()">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Export To Excel</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <section class="example-section">
+                        <mat-list role="list">
+                            <mat-list-item>
+                                <mat-checkbox class="example-margin" [(ngModel)]="schemeNameChecked">Scheme Name
+                                </mat-checkbox>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-checkbox class="example-margin" [(ngModel)]="discountAmountChecked">Discount Amount
+                                </mat-checkbox>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-checkbox class="example-margin" [(ngModel)]="billValueChecked">Bill Value
+                                </mat-checkbox>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <mat-checkbox class="example-margin" [(ngModel)]="expiryDateChecked">Expiry Date
+                                </mat-checkbox>
+                            </mat-list-item>
+                        </mat-list>
+                    </section>
+                    <button mat-raised-button (click)="updateExcelList()">Export To Excel</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="closePopup()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="mat-mdc-card-title m-b-0 ">Discount Blocks</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="row p-20" *ngIf="pendingSchemes.length">
+            <mat-card-header>
+                <mat-card-title class="mat-mdc-card-title m-b-0 " style=" color: red; font-weight: 700; ">PENDING SCHEME
+                </mat-card-title>
+            </mat-card-header>
+            <div class="col-sm-6 col-lg-3 text-center" *ngFor="let store of pendingSchemes">
+                <mat-card class="cardWithShadow productcard">
+                    <mat-card-content class="p-b-24 p-t-12 position-relative">
+                        <mat-card-title class="mat-headline-2 f-s-16 m-b-4">
+                            {{ store.SchemeName }}
+                        </mat-card-title>
+                        <div class="align-items-center justify-content-between">
+
+                            <div class="justify-content-between" style="display:flex">
+                                <h6 class="mat-body-2 f-w-600 textStyle">No of blocks : </h6>
+
+                                <div class="textStyle"> {{store.NumberOfBlocks }} </div>
+                            </div>
+                            <div class="justify-content-between" style="display:flex">
+                                <h6 class="mat-body-2 f-w-600 textStyle"> Creation Rate :</h6>
+
+                                <div class="textStyle"> ₹ {{store.RecommandedRate }} </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <mat-tab-group>
+            <mat-tab label="Active" class="mat-subtitle-2  tab-body">
+                <section class="pad-new m-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 col-lg-5 col-sm-6 col-12" *ngFor="let block of activeScheme">
+                            <mat-card class="cardWithShadow  wtime">
+                                <div class="p-24">
+                                    <p class="text-center mat-subtitle-2 f-w-900 p-12 bg-new rounded">{{
+                                        block.SchemeName }}
+                                    </p>
+                                </div>
+                                <mat-card-content>
+                                    <div class="row">
+                                        <div class="col-md-7 col-lg-7 col-sm-7 col-6">
+                                            <div>
+                                                <mat-list role="list">
+                                                    <mat-list-item role="listitem">Minted</mat-list-item>
+                                                    <mat-list-item role="listitem">Approved Rate</mat-list-item>
+                                                    <mat-list-item role="listitem">Issued To Store</mat-list-item>
+                                                    <mat-list-item role="listitem">Balance Blocks</mat-list-item>
+                                                    <mat-list-item role="listitem">UnDistributed By Store
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">Distributed By Store</mat-list-item>
+                                                    <mat-list-item>Redeemed</mat-list-item>
+                                                    <mat-list-item>Unredeemed</mat-list-item>
+                                                    <mat-list-item>Expire In Days</mat-list-item>
+                                                </mat-list>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-lg-5 col-sm-5 col-6">
+                                            <div>
+                                                <mat-list role="list list-count">
+                                                    <mat-list-item role="listitem">{{ block.Minted }}</mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.ApprovedRate }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsTransfer }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.noOfBalanceBlocks }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.Undistributed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsDistributed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsRedeemed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.UnRedeemed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.ExpiryInDays }}
+                                                    </mat-list-item>
+                                                </mat-list>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr style="opacity: 35%; border-top: dotted 3px;" />
+                                    <div class="view-btn d-flex justify-content-between">
+                                        <span style="font-size: 18px; font-weight: bold; cursor: pointer; color:indigo"
+                                            (click)="openPopupForScheme(block.SchemeID)">View Details</span>
+                                        <img width="48" height="40"
+                                            src="https://img.icons8.com/color/48/export-excel.png"
+                                            (click)="openPopup(block.SchemeID)" alt="export-excel" />
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </section>
+            </mat-tab>
+
+            <mat-tab label="Expired" class="mat-subtitle-2  tab-body">
+                <section class="pad-new m-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 col-lg-5 col-sm-6 col-12" *ngFor="let block of expireScheme">
+                            <mat-card class="cardWithShadow  wtime">
+                                <div class="p-24">
+                                    <p class="text-center mat-subtitle-2 f-w-900 p-12 bg-new rounded">{{
+                                        block.SchemeName }}
+                                    </p>
+                                </div>
+                                <mat-card-content>
+                                    <div class="row">
+                                        <div class="col-md-7 col-lg-7 col-sm-7 col-6">
+                                            <div>
+                                                <mat-list role="list">
+                                                    <mat-list-item role="listitem">Minted</mat-list-item>
+                                                    <mat-list-item role="listitem">Approved Rate</mat-list-item>
+                                                    <mat-list-item role="listitem">Issued To Store</mat-list-item>
+                                                    <mat-list-item role="listitem">Balance Blocks</mat-list-item>
+                                                    <mat-list-item role="listitem">UnDistributed By Store
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">Distributed By Store</mat-list-item>
+                                                    <mat-list-item>Redeemed</mat-list-item>
+                                                    <mat-list-item>Unredeemed</mat-list-item>
+                                                    <mat-list-item>Expire In Days</mat-list-item>
+                                                </mat-list>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-lg-5 col-sm-5 col-6">
+                                            <div>
+                                                <mat-list role="list list-count">
+                                                    <mat-list-item role="listitem">{{ block.Minted }}</mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.ApprovedRate }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsTransfer }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.noOfBalanceBlocks }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.Undistributed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsDistributed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.IsRedeemed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.UnRedeemed }}
+                                                    </mat-list-item>
+                                                    <mat-list-item role="listitem">{{ block.ExpiryInDays }}
+                                                    </mat-list-item>
+                                                </mat-list>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr style="opacity: 35%; border-top: dotted 3px;" />
+                                    <div class="view-btn d-flex justify-content-between">
+                                        <span style="font-size: 18px; font-weight: bold; cursor: pointer; color:indigo"
+                                            (click)="openPopupForScheme(block.SchemeID)">View Details</span>
+                                        <img width="48" height="40"
+                                            src="https://img.icons8.com/color/48/export-excel.png"
+                                            (click)="openPopup(block.SchemeID)" alt="export-excel" />
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </section>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+
+</mat-card>

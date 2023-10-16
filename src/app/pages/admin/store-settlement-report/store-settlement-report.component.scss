@@ -1,0 +1,49 @@
+.year{
+    gap: 50px;
+    // margin-left: 200px;
+    }
+    
+    .backClr{
+        // border: 2px solid indigo;
+        // border-radius: 10px;
+        // background-color: #ECE3F0;
+    }
+    
+    .name{
+        color:indigo ;
+        font-weight: bolder;
+    }
+    .scrollable-container {
+        height: 218px; 
+        overflow: auto;
+      }
+    
+      // .scrollable-container1 {
+      //   height: 450px;
+      //   overflow: auto;
+      // }
+
+    #scroll-design::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #dbbaf0;
+	border-radius: 10px;
+}
+
+#scroll-design::-webkit-scrollbar
+{
+	width: 10px;
+	// background-color: #790ebc;
+}
+
+#scroll-design::-webkit-scrollbar-thumb
+{
+	background-color: #b568e6;
+	border-radius: 10px;
+	
+}
+@media only screen and (min-width: 320px) and (max-width: 374px)  {
+.mat-mdc-text-field-wrapper {
+    width: 70% !important;
+}
+}

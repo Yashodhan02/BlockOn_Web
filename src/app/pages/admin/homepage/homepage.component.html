@@ -1,0 +1,294 @@
+<!-- <p>homepage works!</p> -->
+
+
+
+<section class="user-logo">
+  <mat-card class="cardWithShadow theme-card theme-pad">
+
+    <div class="row">
+
+      <div class=" col-md-2 col-4">
+        <img src="{{safeImageData}}" alt="" class="image">
+        <!-- <img src="/assets/images/admin/blockbuzz.png" alt="" class="image"> -->
+        <!-- <img   src="safeImageData" [alt]="userData.BrandName + ' Logo'" /> -->
+      </div>
+
+      <div class=" col-md-10 col-8">
+        <h1 class="h1"><br>{{userData.BrandName}}</h1>
+
+        <p style="  right: 50px;">{{userData.BrandDescription}}</p>
+      </div>
+
+    </div>
+
+
+
+  </mat-card>
+
+</section>
+
+
+<section class="">
+
+  <mat-card class="cardWithShadow theme-card theme-pad">
+    <mat-card-header>
+      <!-- <mat-card-title class="m-b-0">Lists</mat-card-title> -->
+    </mat-card-header>
+
+
+    <div class="row">
+
+
+
+      <div class=" col-md-6">
+        <mat-card class="cardWithShadow backClr backClrnew">
+          <div class="row">
+            <div class="col-8 ">
+
+
+              <mat-card-title class="mat-mdc-card-header" style="color:indigo ;">Issued Schemes</mat-card-title>
+            </div>
+            <div class="col-4 ">
+              <div class="m-l-auto" style="color:indigo ;">
+                <mat-form-field class="theme-select day-select" appearance="outline">
+                  <mat-select value="7">
+                    <mat-option *ngFor="let month of months" [value]="month.value">
+                      {{ month.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+
+          </div>
+
+          <mat-card-content class="p-24 mat-mdc-card-content b-t-1">
+
+            <div class="row">
+              <div class="col-8">
+                <mat-list role="list">
+                  <mat-list-item role="listitem"> Stores Issued</mat-list-item>
+                  <mat-list-item role="listitem">Issues Blocks</mat-list-item>
+                  <mat-list-item role="listitem">Redemption</mat-list-item>
+                </mat-list>
+              </div>
+              <div class="col-4">
+                <mat-list role="list" class="issue-count">
+                  <mat-list-item role="listitem"><span class="issue-count-list">XX</span></mat-list-item>
+                  <mat-list-item role="listitem"><span class="issue-count-list">XX</span></mat-list-item>
+                  <mat-list-item role="listitem"><span class="issue-count-list">%</span></mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+            <a href="#" class="viewall-btn">View All </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class=" col-md-6">
+        <mat-card class="cardWithShadow backClr backClrnew">
+          <div class="row">
+            <div class="col-8 d-flex">
+
+
+              <mat-card-title class="mat-mdc-card-header" style="color:indigo ;">Settlements</mat-card-title>
+            </div>
+            <div class="col-4">
+              <!-- <div class="m-l-auto" style="color:indigo ;">
+                <mat-form-field class="theme-select day-select" appearance="outline">
+                  <mat-select value="7">
+                    <mat-option *ngFor="let month of months" [value]="month.value">
+                      {{ month.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div> -->
+            </div>
+
+
+          </div>
+
+          <mat-card-content class="p-24 mat-mdc-card-content b-t-1">
+
+            <div class="row">
+              <div class="col-8">
+                <mat-list role="list">
+                  <mat-list-item role="listitem"> Payout Request</mat-list-item>
+                  <mat-list-item role="listitem">Payout Value</mat-list-item>
+
+                </mat-list>
+              </div>
+              <div class="col-4">
+                <mat-list role="list" class="issue-count">
+                  <mat-list-item role="listitem"> <span class="issue-count-list">XX</span></mat-list-item>
+                  <mat-list-item role="listitem"><span class="issue-count-list">XX</span></mat-list-item>
+
+                </mat-list>
+              </div>
+            </div>
+            <a href="#" class="viewall-btn-two">View All </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+  </mat-card>
+</section>
+
+
+
+
+
+<section>
+
+  <mat-card class="cardWithShadow backClr ">
+    <mat-card-content class=" schemesreedmed">
+      <div class="row">
+        <div class="col-lg-8">
+          <mat-card-title style="color:indigo ;">Schemes Reedmed</mat-card-title>
+
+          <mat-list-item role="reedmed-listitem" class="reedmed-listitem">Last 7 Days: XXX | Last 14 Days : XXX | Last
+            30 Days : XXX</mat-list-item>
+        </div>
+
+        <div class="col-lg-4 text-right">
+          <a href="#" class="a view-all-btn">View All</a>
+        </div>
+      </div>
+
+
+
+    </mat-card-content>
+
+  </mat-card>
+</section>
+<!-- <hr style="opacity: 35%; border-top: dotted 3px;" /> -->
+<br>
+
+<section>
+  <mat-card class="cardWithShadow theme-card theme-pad">
+    <div class="row">
+      <div class="col-lg-4">
+        <mat-card class="cardWithShadow backClr" style="background: linear-gradient(45deg,#2ed8b6,#59e0c5);">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-9 col-9">
+                <!-- <img src="/assets/images/admin/blockbuzz.png" alt="" class="image"> -->
+                <mat-card-title class="m-b-0 view-discount-heading" style="color: #ffffff;">Discount Blocks
+                </mat-card-title>
+                <span style="font-family: 'Geologica', sans-serif;"> <a class="a view-discount-para"
+                    href="/admin/view-discount-block" style="color: #ffffff;">View & Manage Your Discount
+                    Blocks</a></span>
+                <!-- <a href="#" class="view" >View All ></a> -->
+              </div>
+              <div class="col-lg-3 col-3">
+                <div class="icon-new">
+                  <!-- <img src="assets/images/icon/discount.png" width="100%"> -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                    stroke="white" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185zM9.75 9h.008v.008H9.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 4.5h.008v.008h-.008V13.5zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-lg-4">
+        <mat-card class="cardWithShadow backClr" style="background: linear-gradient(45deg,#FFB64D,#ffcb80);">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-9 col-9">
+                <mat-card-title class="m-b-0" style="color: #ffffff;">Cashback Blocks</mat-card-title>
+                <span style=" font-family: 'Geologica', sans-serif;"> <a class="a view-discount-para"
+                    href="/cashback/view-cashback-blocks" style="color: #ffffff;">View & Manage Your Cashback
+                    Blocks</a></span>
+                <!-- <a href="#" class="view" >View All ></a> -->
+              </div>
+              <div class="col-lg-3 col-3 text-right">
+                <div class="icon-new">
+                  <!-- <img src="assets/images/icon/currency.png" width="100%"> -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                    stroke="white" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+
+      <div class="col-lg-4">
+        <mat-card class="cardWithShadow backClr" style="background: linear-gradient(45deg, #FF5370, #ff869a);">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-9 col-9">
+                <mat-card-title class="m-b-0" style="color: #ffffff;">Co-Branded Blocks</mat-card-title>
+                <span style=" font-family: 'Geologica', sans-serif;"> <a class="a view-discount-para"
+                    href="/cobranded/view-co-branded-blocks" style="color: #ffffff;">View & Manage Your View Co-Branded
+                    Blocks</a></span>
+                <!-- <a href="#" class="view" >View All ></a> -->
+              </div>
+              <div class="col-lg-3 col-3 text-right">
+                <div class="icon-new">
+                  <!-- <img src="assets/images/icon/currency.png" width="100%"> -->
+
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                    stroke="white" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round"
+                      d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
+                  </svg>
+
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+  </mat-card>
+</section>
+<hr style="opacity: 35%; border-top: dotted 3px;" />
+<br>
+<section>
+  <mat-card class="col-md-3 backClr btn-new" style="margin: auto;">
+    <mat-card-content class=" network-btn">
+      <mat-card-title>
+        <a class="m-b-0 text-center" style="color:rgb(247, 246, 248) ;" href="/admin/view-network">
+          View Network 
+      </a>
+      </mat-card-title>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,148 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="mat-mdc-card-title m-b-0 "> View Network</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <section>
+      <mat-tab-group>
+        <mat-tab label="Own Stores" class="mat-subtitle-2 f-w-900">
+          <br>
+          <!-- <mat-form-field appearance="outline" class="rounded-search">
+            <input matInput type="text" placeholder="Search">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field> -->
+          <!-- <section>
+            <mat-card-title class="mat-mdc-card-title m-b-0 "> New Store Request</mat-card-title>
+            <div class="row p-t-20">
+
+              <div class="col-sm-6 col-lg-6">
+                <mat-card class="b-1 shadow-none">
+                  <mat-card-header class="text-center">
+                    <mat-checkbox class="custom-checkbox" [(ngModel)]="isChecked">
+                      <span style="color: green"> Approved</span>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                      <span style="color: red;"> Disapproved</span>
+                    </mat-checkbox>
+                  </mat-card-header>
+                  <mat-card-content class="b-t-1">
+                    <div class="row">
+                      <div class="col-6">
+                        <img src="/assets/images/admin/blockbuzz.png" alt="" class="image">
+                      </div>
+                      <div class="col-6">
+                        <mat-list>
+                          <mat-list-item>
+                            <span matListItemTitle class="f-s-20 f-w-600 name">Own Store1</span>
+                            <span matListItemLine class="mat-body-1">Number</span>
+                          </mat-list-item>
+                        </mat-list>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+
+
+              <div class="col-sm-6 col-lg-6">
+                <mat-card class="b-1 shadow-none">
+                  <mat-card-header class="text-center">
+                    <mat-checkbox class="custom-checkbox" [(ngModel)]="isChecked">
+                      <span style="color: green"> Approved</span>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                      <span style="color: red;"> Disapproved</span>
+                    </mat-checkbox>
+                  </mat-card-header>
+                  <mat-card-content class="b-t-1">
+                    <div class="row">
+                      <div class="col-6">
+                        <img src="/assets/images/admin/blockbuzz.png" alt="" class="image">
+                      </div>
+                      <div class="col-6">
+                        <mat-list>
+                          <mat-list-item>
+                            <span matListItemTitle class="f-s-20 f-w-600 name">Own Store2</span>
+                            <span matListItemLine class="mat-body-1">Number</span>
+                          </mat-list-item>
+                        </mat-list>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </section> -->
+          <!-- <hr style="opacity: 35%; border-top: dotted 3px;" /> -->
+          <section>
+            <mat-card-title class="mat-mdc-card-title m-b-0 p-t-20"> My Store Network</mat-card-title>
+            <mat-form-field appearance="outline" class="rounded-search">
+              <input matInput type="text" placeholder="Enter Store name" [(ngModel)]="searchText1">
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <mat-paginator [length]="own_stores.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+              (page)="onPageChangeForOwnStores($event)">
+            </mat-paginator>
+            <div class="row p-t-20">
+              <div class="col-sm-6 col-lg-3 text-center" *ngFor="let store of pagedOwnStoresList | filter: searchText1">
+                <mat-card class="cardWithShadow productcard overflow-hidden">
+                  <a routerLink="/widgets/cards">
+                    <img src="/assets/images/admin/blockbuzz.png" alt="" class="image">
+                  </a>
+                  <mat-card-content class="p-b-24 p-t-12 position-relative">
+                    <mat-card-title class="mat-headline-2 f-s-16 m-b-4">
+                      {{ store.StoreName }}
+                    </mat-card-title>
+                    <div class="align-items-center justify-content-between">
+                      <div class="align-items-center">
+                        <h6 class="mat-body-2 f-w-600 text-center"> {{ store.MobileNo }}</h6>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+
+          </section>
+        </mat-tab>
+        <mat-tab label="Partner Stores">
+          <br>
+          <section>
+            <mat-card-title class="mat-mdc-card-title m-b-0 p-t-20"> My Store Network</mat-card-title>
+            <mat-form-field appearance="outline" class="rounded-search">
+              <input matInput type="text" placeholder="Enter Store name" [(ngModel)]="searchText">
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          
+            <mat-paginator [length]="partner_stores.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+              (page)="onPageChangeForPartnerStores($event)">
+            </mat-paginator>
+            <div class="row p-t-20">
+              <div class="col-sm-6 col-lg-3 text-center"
+                *ngFor="let store of pagedPartnerStoresList | filter: searchText">
+                <mat-card class="cardWithShadow productcard overflow-hidden">
+                  <a routerLink="/widgets/cards">
+                    <img src="/assets/images/admin/blockbuzz.png" alt="" class="image">
+                  </a>
+                  <mat-card-content class="p-b-24 p-t-12 position-relative">
+                    <mat-card-title class="mat-headline-2 f-s-16 m-b-4">
+                      {{ store.StoreName }}
+                    </mat-card-title>
+                    <div class="align-items-center justify-content-between">
+                      <div class="align-items-center">
+                        <h6 class="mat-body-2 f-w-600 text-center"> {{ store.MobileNo }}</h6>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+
+          </section>
+        
+        </mat-tab>
+      </mat-tab-group>
+    </section>
+
+  </mat-card-content>
+</mat-card>

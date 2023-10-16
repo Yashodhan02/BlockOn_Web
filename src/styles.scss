@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.search-wrapper {
+    border-radius: 20px;
+    background-color: var(--search-area-bg);
+    padding-right: 12px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    color: var(--light-font);
+    box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+    overflow: hidden;
+}
+.search-input {
+    border: none;
+    flex: 1;
+    outline: none;
+    height: 100%;
+    padding: 0 20px;
+    font-size: 16px;
+    background-color: var(--search-area-bg);
+    color: var(--main-color);
+}
+.mdc-tab {
+    min-width: 90px;
+    -webkit-tap-highlight-color: rgb(222 191 241);}
+
+#scroll-design::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #dbbaf0;
+	border-radius: 10px;
+}
+
+#scroll-design::-webkit-scrollbar
+{
+	width: 10px;
+	// background-color: #790ebc;
+}
+
+#scroll-design::-webkit-scrollbar-thumb
+{
+	background-color: #b568e6;
+	border-radius: 10px;
+	
+}
+
+.bg-new{
+    background-color: #790ebc42 !important;
+}
+.view-btn{
+    padding: 10px 0 0 0;
+
+}
+.schemecard-img img{
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    right: 20px;
+}
+.package__price{
+    font-weight: 900;
+    font-size: 45px;
+    padding: 16px 0 16px 0;
+}
+.package__price-container p{
+   
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    padding: 0 0 4px 0;
+}
+
+.package__price-container span{
+   
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.package__price-container h3{
+    font-size: 9px !important;
+    font-weight: 700;
+    margin: 0;
+    padding: 18px 0 0 0;
+}
+
+.package__price-container h4{
+    font-size: 11px !important;
+    margin: 0 0 15px 0;
+    font-weight: 800;
+}
+.minted-btn{
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+.scheme-name{
+    padding: 15px 0 5px 0;
+    // display: inline-block !important;
+}
+.schemecard-width{
+    max-width: 30.333333%;
+    margin: 0 20px 0 0;
+}
+.schemecard-img{
+    padding: 10px 0 0 0;
+}
+
+.btn-card{
+    float: right;
+}
+.package__price-container .no-text {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0;
+    height: 45px;
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+@media screen and (max-width: 768px) {
+    .schemecard-width{
+        max-width: 100% !important;
+       
+    }
+}

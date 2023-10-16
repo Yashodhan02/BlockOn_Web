@@ -1,0 +1,669 @@
+
+
+
+<mat-card class="cardWithShadow theme-card">
+
+    <mat-card-header>
+        <mat-card-title class="mat-mdc-card-title m-b-0 "> Store Settlement Report</mat-card-title>
+      </mat-card-header>
+    <mat-card-content class="b-t-1">
+
+        <section class="p-t-20">
+            <div class="row year">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                    <label for="">Year</label>
+                    <div class="m-l-auto backClr">
+                        <mat-form-field class="theme-select" appearance="outline">
+                            <mat-select value="5">
+                                <mat-option *ngFor="let year of year" [value]="year.value">
+                                    {{ year.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+        
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                    <label for="">Month</label>
+                    <div class="m-l-auto backClr">
+                        <mat-form-field class="theme-select" appearance="outline">
+                            <mat-select value="12">
+                                <mat-option *ngFor="let month of months" [value]="month.value">
+                                    {{ month.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+        
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                    <label for="">#Blocks</label>
+                    <div class="m-l-auto backClr">
+                        <mat-form-field class="theme-select" appearance="outline">
+                            <mat-select value="3">
+                                <mat-option *ngFor="let block of blocks" [value]="block.value">
+                                    {{ block.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+
+
+        <div class="">
+            <section class="p-t-20 scrollable-container1" id="scroll-design">
+        
+                <h4 class="name">21-12-22</h4>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+                <div class="row scrollable-container" id="scroll-design">
+                    <!-- <mat-card class="col-md-6 cardWithShadow">
+                        <mat-card-content>
+                            <mat-card class="col-5 backClr">
+                                <mat-list-item>
+                                    <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                    <span matListItemLine class="mat-body-1">Referral Block</span>
+                                </mat-list-item>
+                            </mat-card>
+                            <p> Voucher Scheme Name</p>
+                            <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                            </p>
+                        </mat-card-content>
+                    </mat-card> -->
+        
+
+                    <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+
+
+
+                     
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+                </div>
+            </section>
+        
+            <section class="p-t-20 ">
+                <h4 class="name">20-12-22</h4>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+                <div class="row scrollable-container"  id="scroll-design">
+                    <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+                            
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="scrollable-container1">
+            <section class="p-t-20 ">
+        
+                <h4 class="name">21-12-22</h4>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+                <div class="row scrollable-container " id="scroll-design">
+                    <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+                </div>
+            </section>
+        
+            <section class="p-t-20 ">
+                <h4 class="name">20-12-22</h4>
+                <hr style="opacity: 35%; border-top: dotted 3px;" />
+                <div class="row scrollable-container" id="scroll-design">
+                    <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+        
+                      <div class="col-lg-6">
+                        <!-- ------------------------------------------------------------------------- -->
+                        <!-- Drag n Drop -->
+                        <!-- ------------------------------------------------------------------------- -->
+                
+                        <mat-card class="b-1 shadow-none">
+                          <mat-card-header>
+                            <mat-card-title> <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                                <span matListItemLine class="mat-body-1">Referral Block</span></mat-card-title>
+                          </mat-card-header>
+                          <mat-card-content class="b-t-1">
+
+
+                          
+                                <!-- <mat-card class="col-5 backClr">
+                                  
+                                </mat-card> -->
+                                <p> Voucher Scheme Name</p>
+                                <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                                </p>
+                            </mat-card-content>
+                 
+                        </mat-card>
+                      </div>
+                </div>
+            </section>
+        </div>
+    
+    </mat-card-content>
+  </mat-card>
+<!-- <div class="text-center f-w-600" style="font-size: xx-large;">
+    Store Settlement Report
+</div> -->
+<!-- <section class="p-t-20">
+    <div class="row year">
+        <div>
+            <label for="">Year</label>
+            <div class="m-l-auto backClr">
+                <mat-form-field class="theme-select" appearance="outline">
+                    <mat-select value="5">
+                        <mat-option *ngFor="let year of year" [value]="year.value">
+                            {{ year.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div>
+            <label for="">Month</label>
+            <div class="m-l-auto backClr">
+                <mat-form-field class="theme-select" appearance="outline">
+                    <mat-select value="12">
+                        <mat-option *ngFor="let month of months" [value]="month.value">
+                            {{ month.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div>
+            <label for="">#Blocks</label>
+            <div class="m-l-auto backClr">
+                <mat-form-field class="theme-select" appearance="outline">
+                    <mat-select value="3">
+                        <mat-option *ngFor="let block of blocks" [value]="block.value">
+                            {{ block.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </div>
+</section> -->
+<!-- <div class="scrollable-container1">
+    <section class="p-t-20 ">
+
+        <h4 class="name">21-12-22</h4>
+        <hr style="opacity: 35%; border-top: dotted 3px;" />
+        <div class="row scrollable-container " id="scroll-design">
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <br>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                            <span matListItemLine class="mat-body-1">Issued Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">100</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </section>
+
+    <section class="p-t-20 ">
+        <h4 class="name">20-12-22</h4>
+        <hr style="opacity: 35%; border-top: dotted 3px;" />
+        <div class="row scrollable-container">
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <br>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store B</span>
+                            <span matListItemLine class="mat-body-1">Issued Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">100</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="col-md-6 cardWithShadow">
+                <mat-card-content>
+                    <mat-card class="col-5 backClr">
+                        <mat-list-item>
+                            <span matListItemTitle class="f-s-16 f-w-600 name">Store A</span>
+                            <span matListItemLine class="mat-body-1">Referral Block</span>
+                        </mat-list-item>
+                    </mat-card>
+                    <p> Voucher Scheme Name</p>
+                    <p> Block Value: 100 Redemption rate 100% <span class="name" style="padding-left: 120px;">50</span>
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </section>
+</div> -->
+
+<button mat-flat-button color="primary" class="" style="margin: 0 auto; display: block;">
+    Settle Payouts
+  </button>

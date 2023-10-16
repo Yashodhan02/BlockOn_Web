@@ -1,0 +1,125 @@
+<mat-card class="cardWithShadow theme-card">
+   <mat-card-header>
+      <mat-card-title class="mat-mdc-card-title m-b-0 ">Export Stores</mat-card-title>
+   </mat-card-header>
+   <mat-card-content class="b-t-1">
+      <section>
+         <mat-tab-group>
+            <mat-tab label="Own Stores" class="mat-subtitle-2 f-w-900">
+               <div class="col-md-6 d-flex align-items-center">
+                  <mat-card class="cardWithShadow boxed-auth">
+                     <mat-card-content class="p-32">
+                        <form class="m-t-30" [formGroup]="storeForm">
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Store Name</mat-label>
+                              <input class="w-100 formfield" type="text" [(ngModel)]="storeName"
+                                 formControlName="storeName" required placeholder="Store Name" />
+                              <div
+                                 *ngIf="storeForm.controls['storeName'].invalid &&(storeForm.controls['storeName'].dirty ||storeForm.controls['storeName'].touched)"
+                                 class="alert alert-danger">
+                                 Please Enter Name
+                              </div>
+                           </div>
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mobile No</mat-label>
+                              <div class="form_element mobile">
+                                 <input class="w-100 formfield" type="tel" formControlName="mobileNo" minlength="10"
+                                    maxlength="10" [(ngModel)]="mobileNo" required placeholder="Mobile No."
+                                    oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" />
+
+                                 <div
+                                    *ngIf="storeForm.controls['mobileNo'].invalid &&(storeForm.controls['mobileNo'].dirty ||storeForm.controls['mobileNo'].touched)"
+                                    class="alert alert-danger">
+                                    Please Enter Mobile No
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Address
+                              </mat-label>
+                              <input class="w-100 formfield" type="text" [(ngModel)]="address" formControlName="address"
+                                 required placeholder="Address" />
+
+                              <div
+                                 *ngIf="storeForm.controls['address'].invalid &&(storeForm.controls['address'].dirty ||storeForm.controls['address'].touched)"
+                                 class="alert alert-danger">
+                                 Please Enter Address
+                              </div>
+                           </div>
+                           <button [disabled]="storeForm.invalid" mat-flat-button color="primary" class="m-x-20"
+                              type="button" (click)="uploadExcelForOwnStore()"> Submit</button>
+                        </form>
+                     </mat-card-content>
+                  </mat-card>
+               </div>
+
+               <div class="or-container">
+                  <div class="or-line"></div>
+                  <p class="or-text">OR</p>
+                  <div class="or-line"></div>
+                </div>
+               
+               <input type="file" (change)="onFileChange($event)" accept=".xlsx">
+               <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+               <button [disabled]="!fileToUpload" mat-flat-button color="primary" class="m-x-20" type="button"
+                  (click)="uploadExcelForOwnStore()">Upload and Process</button>
+            </mat-tab>
+            <mat-tab label="Partner Stores">
+
+               <div class="col-md-6 d-flex align-items-center">
+                  <mat-card class="cardWithShadow boxed-auth">
+                     <mat-card-content class="p-32">
+                        <form class="m-t-30" [formGroup]="storeForm">
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Store Name</mat-label>
+                              <input class="w-100 formfield" type="text" [(ngModel)]="storeName"
+                                 formControlName="storeName" required placeholder="Store Name" />
+                              <div
+                                 *ngIf="storeForm.controls['storeName'].invalid &&(storeForm.controls['storeName'].dirty ||storeForm.controls['storeName'].touched)"
+                                 class="alert alert-danger">
+                                 Please Enter Name
+                              </div>
+                           </div>
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mobile No</mat-label>
+                              <div class="form_element mobile">
+                                 <input class="w-100 formfield" type="tel" formControlName="mobileNo" minlength="10"
+                                    maxlength="10" [(ngModel)]="mobileNo" required placeholder="Mobile No."
+                                    oninput="if(!this.value.match('^[1-9][0-9]*$'))this.value='';" />
+
+                                 <div
+                                    *ngIf="storeForm.controls['mobileNo'].invalid &&(storeForm.controls['mobileNo'].dirty ||storeForm.controls['mobileNo'].touched)"
+                                    class="alert alert-danger">
+                                    Please Enter Mobile No
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div>
+                              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Address
+                              </mat-label>
+                              <input class="w-100 formfield" type="text" [(ngModel)]="address" formControlName="address"
+                                 required placeholder="Address" />
+
+                              <div
+                                 *ngIf="storeForm.controls['address'].invalid &&(storeForm.controls['address'].dirty ||storeForm.controls['address'].touched)"
+                                 class="alert alert-danger">
+                                 Please Enter Address
+                              </div>
+                           </div>
+                           <button [disabled]="storeForm.invalid" mat-flat-button color="primary" class="m-x-20"
+                              type="button" (click)="uploadExcelForPartnerStore()"> Submit</button>
+                        </form>
+                     </mat-card-content>
+                  </mat-card>
+               </div>
+               <input type="file" (change)="onFileChange($event)" accept=".xlsx">
+               <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+               <button [disabled]="!fileToUpload" mat-flat-button color="primary" class="m-x-20" type="button"
+                  (click)="uploadExcelForPartnerStore()">Upload and Process</button>
+            </mat-tab>
+         </mat-tab-group>
+      </section>
+   </mat-card-content>
+</mat-card>
